@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+      .todo-completed {
+        background-color: greenyellow;
+      }
+      .todo-not-completed {
+        background-color: red;
+      }
+
+      #app {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="left-container" style="width: 30rem">
+        <!-- call getId method that takes todo.id as its argument when clicked  -->
+        <div v-for="todo in todos" :key="todo.id" @click="handleClick(todo.id)">
+          <div v-if="todo.completed">
+            <p class="todo-completed">{{todo.title}}</p>
+          </div>
+          <div v-if="!todo.completed">
+            <p class="todo-not-completed">{{todo.title}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        v-for="complete in completed"
+        class="right-container"
+        style="width: 30rem"
+        @click="handleClick2(complete.id)"
+      >
+        <p class="todo-completed">{{complete.title}}</p>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
